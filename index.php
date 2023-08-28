@@ -15,6 +15,12 @@ include_once('./config/autoload.php');
 
 <body>
 
+<header>
+    <h1>welcome to my farm !</h1>
+</header>
+
+<!-- ANIMALS -->
+
 <div class="animals">
 
     <div class="animals__tiger">
@@ -46,6 +52,36 @@ include_once('./config/autoload.php');
     ?>
     </div>
 
+</div>
+
+<!-- ENCLOSURES -->
+<div class="enclosures">
+<div class="enclosures__tiger">
+    <?php
+    $enclosure = new Enclosure(" Tiger Enclosure ");
+    $enclosure->addAnimals($tiger);
+
+    echo $enclosure->getAttendingAnimals() . " animal(s) are/is in the enclosure. ";
+    echo $enclosure->displayEnclosureDetails();
+
+    // Display each animal's details within the enclosure
+    foreach ($enclosure->getAnimals() as $animal) {
+        $animal->displayAnimalInfo();
+    }
+    ?>
+    </div>
+
+    <div class="enclosures__fish">
+        
+    </div>
+
+    <div class="enclosures__bear">
+        
+    </div>
+
+    <div class="enclosures__eagle">
+        
+    </div>
 </div>
 
 </body>

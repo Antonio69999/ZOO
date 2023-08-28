@@ -1,9 +1,38 @@
+@font-face {
+  font-family: pressStart;
+  src: url(../assets/fonts/prstart.ttf);
+}
+@font-face {
+  font-family: pressStartk;
+  src: url(../assets/fonts/prstartk.ttf);
+}
+header {
+  font-family: pressStart;
+  font-size: 59px;
+  display: flex;
+  justify-content: center;
+}
+
+div {
+  font-family: pressStart;
+}
+
 .animals {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   text-justify: justify;
+  font-size: large;
+}
+
+.enclosures {
+  display: flex;
+  flex-direction: column;
+  border: black 2px solid;
+  justify-content: jusity;
+  text-align: justify;
+  font-size: large;
 }
 
 /*# sourceMappingURL=main.css.map */
