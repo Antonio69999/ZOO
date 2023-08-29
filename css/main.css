@@ -6,15 +6,24 @@
   font-family: pressStartk;
   src: url(../assets/fonts/prstartk.ttf);
 }
+body {
+  background-color: #4CAF50;
+}
+
 header {
   font-family: pressStart;
-  font-size: 59px;
+  font-size: 35px;
   display: flex;
   justify-content: center;
 }
 
 div {
   font-family: pressStart;
+  line-height: 26px;
+}
+
+.letters_color {
+  color: rgb(238, 0, 0);
 }
 
 .animals {
@@ -29,7 +38,7 @@ div {
 .enclosures {
   display: flex;
   flex-direction: column;
-  border: black 2px solid;
+  border: rgb(180, 82, 12) 3px solid;
   justify-content: jusity;
   text-align: justify;
   font-size: large;

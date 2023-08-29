@@ -2,9 +2,10 @@
 
 abstract class   Animal
 {
-        protected float $weight;
-        protected float $height;
+        protected string $weight;
+        protected string $height;
         protected string $name;
+        protected string $species;
         protected int $age;
 
         protected bool $isHungry = false;
@@ -153,13 +154,34 @@ abstract class   Animal
                 return $this;
         }
 
+                /**
+         * Get the value of species
+         */ 
+        public function getSpecies()
+        {
+                return $this->species;
+        }
+
+        /**
+         * Set the value of species
+         *
+         * @return  self
+         */ 
+        public function setSpecies($species)
+        {
+                $this->species = $species;
+
+                return $this;
+        }
+
 
         public function displayAnimalInfo()
         {
-                echo "Weight : " . $this->getWeight() . " kg " . "<br>";
-                echo "Height : " . $this->getHeight() . " cm " . "<br>";
-                echo "Age : " . $this->getAge() . "y.o " . "<br>";
                 echo "Name : " . $this->getName() . "<br>";
+                echo "Species : " . $this->getSpecies() . "<br>";
+                echo "Height : " . $this->getHeight() . " cm " . "<br>";
+                echo "Weight : " . $this->getWeight() . " kg " . "<br>";
+                echo "Age : " . $this->getAge() . " y.o " . "<br>";
         }
 
         public function eat() : string
@@ -195,4 +217,5 @@ abstract class   Animal
 
                 return 'I\'m in great shape ! ';
         }
+
 }
