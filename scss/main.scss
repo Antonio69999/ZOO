@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color : #4CAF50;
+    background-color: #53a856;
 }
 
 header {
@@ -62,11 +62,21 @@ div {
 // ENCLOSURE //
 
 .enclosures {
-    display: flex;
-    flex-direction: column;
-    border: rgb(180, 82, 12) 3px solid;
-    justify-content: jusity;
-    text-align: justify;
-    font-size: large;
+    &__tiger {
+        display: flex;
+        flex-direction: column;
+        border: rgb(180, 82, 12) 3px solid;
+        justify-content: jusity;
+        text-align: justify;
+        font-size: large;
+    }
 
+    &__fish {
+        display: flex;
+        flex-direction: column;
+        border: rgb(180, 82, 12) 3px solid;
+        justify-content: jusity;
+        text-align: justify;
+        font-size: large;
+    }
 }
