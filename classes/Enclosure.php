@@ -124,7 +124,7 @@ class Enclosure
         return 'The enclosure has been cleaned successfully';
     }
 
-    public function addAnimals(Animal $animal)
+    public function addAnimalsInEnclosure(Animal $animal)
     {
         if ($this->getAttendingAnimals() < 6) {
             $this->animals[] = $animal;

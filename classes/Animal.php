@@ -2,15 +2,25 @@
 
 abstract class   Animal
 {
-        protected string $weight;
-        protected string $height;
-        protected string $name;
-        protected string $species;
-        protected int $age;
+        protected  $idAnimal;
+        protected  $weight;
+        protected  $height;
+        protected  $name;
+        protected  $species;
+        protected  $age;
 
         protected bool $isHungry = false;
         protected bool $isSleeping = false;
         protected bool $isSick = false;
+
+        public function __construct($animal)
+        {
+                $this->setWeight($animal['weight']);
+                $this->setHeight($animal['height']);
+                $this->setName($animal['name']);
+                $this->setSpecies($animal['species']);
+                $this->setAge($animal['age']);
+        }
 
 
 
@@ -174,14 +184,35 @@ abstract class   Animal
                 return $this;
         }
 
-
-        public function displayAnimalInfo()
+         /**
+         * Get the value of idAnimal
+         */ 
+        public function getIdAnimal()
         {
-                echo "Name : " . $this->getName() . "<br>";
-                echo "Species : " . $this->getSpecies() . "<br>";
-                echo "Height : " . $this->getHeight() . " cm " . "<br>";
-                echo "Weight : " . $this->getWeight() . " kg " . "<br>";
-                echo "Age : " . $this->getAge() . " y.o " . "<br>";
+                return $this->idAnimal;
+        }
+
+        /**
+         * Set the value of idAnimal
+         *
+         * @return  self
+         */ 
+        public function setIdAnimal($idAnimal)
+        {
+                $this->idAnimal = $idAnimal;
+
+                return $this;
+        }
+        
+
+
+        public function displayAnimalInfo($animal)
+        {
+                echo "Name : " . $this->getName($animal) . "<br>";
+                echo "Species : " . $this->getSpecies($animal) . "<br>";
+                echo "Height : " . $this->getHeight($animal) . " cm " . "<br>";
+                echo "Weight : " . $this->getWeight($animal) . " kg " . "<br>";
+                echo "Age : " . $this->getAge($animal) . " y.o " . "<br>";
         }
 
         public function eat() : string

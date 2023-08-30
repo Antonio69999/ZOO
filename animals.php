@@ -1,5 +1,10 @@
 <?php
 include_once('./config/autoload.php');
+include_once('./config/db.php');
+include('./classes/AnimalManager.php');
+
+$animalManager = new AnimalManager($db);
+
 ?>
 
 <!DOCTYPE html>
@@ -33,32 +38,17 @@ include_once('./config/autoload.php');
         </a>
     </div>
 
-    <!-- FORM CHECK -->
-    <?php
-    $tigerEnclosure = new Enclosure("Tiger's Enclosure");
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $name = $_POST['name'];
-        $species = $_POST['species'];
-        $weight = $_POST['weight'];
-        $height = $_POST['height'];
-        $age = $_POST['age'];
-
-        //Create an instance of the animal
-        $_SESSION = new Tiger($name, $species, $weight, $height, $age);
-
-        //Add the new animal to the enclosure
-        $tigerEnclosure->addAnimals($newTiger); //$tigerEnclosure is an instance of Enclosure
-    }
-
-    ?>
-
     <!-- ANIMALS -->
 
-    <!-- <div class="animals">
+    <div class="animals">
 
         <div class="animals__tiger">
-            
+            <?php
+            $tigers_array = $animalManager->findAllTigers();
+            foreach ($tigers_array as $tiger) {
+                echo $tiger->displayAnimalInfo($tiger);
+            }
+            ?>  
         </div>
 
         <div class="animals__axolotl">
@@ -75,26 +65,15 @@ include_once('./config/autoload.php');
             
         </div>
 
-    </div> -->
+    </div>
 
     <!-- ENCLOSURES -->
     <div class="enclosures">
         <div class="enclosures__tiger">
-            <?php
-
-            echo $tigerEnclosure->getAttendingAnimals() . " animal(s) are in the enclosure. " . "<br>";
-            echo $tigerEnclosure->displayEnclosureDetails();
-            echo $tigerEnclosure->displayAllAnimalsInEnclosure(); // Display all animals in the tiger enclosure
-            ?>
 
         </div>
 
         <div class="enclosures__fish">
-            <?php
-            // echo $fishEnclosure->getAttendingAnimals() . " animal(s) are in the enclosure." . "<br>";
-            // echo $fishEnclosure->displayEnclosureDetails();
-            // echo $fishEnclosure->displayAllAnimalsInEnclosure(); // Display all animals in the fish enclosure
-            ?>
 
         </div>
 
