@@ -15,11 +15,12 @@ abstract class   Animal
 
         public function __construct($animal)
         {
-                $this->setWeight($animal['weight']);
-                $this->setHeight($animal['height']);
-                $this->setName($animal['name']);
-                $this->setSpecies($animal['species']);
-                $this->setAge($animal['age']);
+                $this->setName($animal['name'] ?? '');       // Use default value if not provided
+                $this->setWeight($animal['weight'] ?? 0);    // Use default value if not provided
+                $this->setHeight($animal['height'] ?? 0);    // Use default value if not provided
+                $this->setSpecies($animal['species'] ?? ''); // Use default value if not provided
+                $this->setAge($animal['age'] ?? 0);          // Use default value if not provided
+
         }
 
 
@@ -164,9 +165,9 @@ abstract class   Animal
                 return $this;
         }
 
-                /**
+        /**
          * Get the value of species
-         */ 
+         */
         public function getSpecies()
         {
                 return $this->species;
@@ -176,7 +177,7 @@ abstract class   Animal
          * Set the value of species
          *
          * @return  self
-         */ 
+         */
         public function setSpecies($species)
         {
                 $this->species = $species;
@@ -184,9 +185,9 @@ abstract class   Animal
                 return $this;
         }
 
-         /**
+        /**
          * Get the value of idAnimal
-         */ 
+         */
         public function getIdAnimal()
         {
                 return $this->idAnimal;
@@ -196,14 +197,14 @@ abstract class   Animal
          * Set the value of idAnimal
          *
          * @return  self
-         */ 
+         */
         public function setIdAnimal($idAnimal)
         {
                 $this->idAnimal = $idAnimal;
 
                 return $this;
         }
-        
+
 
 
         public function displayAnimalInfo($animal)
@@ -215,22 +216,19 @@ abstract class   Animal
                 echo "Age : " . $this->getAge($animal) . " y.o " . "<br>";
         }
 
-        public function eat() : string
+        public function eat(): string
         {
-                if ($this->getIsHungry())
-                {
+                if ($this->getIsHungry()) {
                         $this->setIsHungry(false);
                         return 'I\'m well fed';
                 }
 
                 return 'I\'m not hungry';
-
         }
 
-        public function sleep() : string
+        public function sleep(): string
         {
-                if ($this->getIsSleeping())
-                {
+                if ($this->getIsSleeping()) {
                         $this->setIsSleeping(true);
                         return 'I\'m sleeping, rompished...';
                 }
@@ -238,15 +236,13 @@ abstract class   Animal
                 return 'I\'m awake';
         }
 
-        public function sick() : string
+        public function sick(): string
         {
-                if ($this->getIsSick())
-                {
+                if ($this->getIsSick()) {
                         $this->setIsSick(true);
                         return 'Oh no I\'m sick...';
                 }
 
                 return 'I\'m in great shape ! ';
         }
-
 }

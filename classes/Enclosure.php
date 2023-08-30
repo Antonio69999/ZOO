@@ -2,15 +2,15 @@
 
 class Enclosure
 {
+    private int $idEnclosure;
     private string $name;
     private bool $isClean = true;
-    private int $attendingAnimals = 0; // Use the correct property name
-    private array $animals = []; // Store currently present animals
+    private int $attendingAnimals = 0;
+    private array $animals = []; 
 
-    public function __construct($name)
+    public function __construct($enclosure)
     {
-        $this->name = $name;
-        $this->attendingAnimals = 0; // Initialize attendingAnimals, not animalCount
+        $this->setName($enclosure['name'] ?? '');
     }
 
 
@@ -95,6 +95,26 @@ class Enclosure
         return $this;
     }
 
+        /**
+     * Get the value of idEnclosure
+     */ 
+    public function getIdEnclosure()
+    {
+        return $this->idEnclosure;
+    }
+
+    /**
+     * Set the value of idEnclosure
+     *
+     * @return  self
+     */ 
+    public function setIdEnclosure($idEnclosure)
+    {
+        $this->idEnclosure = $idEnclosure;
+
+        return $this;
+    }
+
     ////////////////////////////////////////////////////////////////////////
 
     public function displayAnimalDetails(Animal $animal)
@@ -142,4 +162,6 @@ class Enclosure
             "<br>";
         }
     }
+
+
 }

@@ -4,6 +4,7 @@ include_once('./config/db.php');
 include('./classes/AnimalManager.php');
 
 $animalManager = new AnimalManager($db);
+$enclosureManager = new EnclosureManager($db);
 
 ?>
 
@@ -36,6 +37,12 @@ $animalManager = new AnimalManager($db);
         <a href="./index.php">
             <button class="bubbly-button">Add Animal</button>
         </a>
+        <a href="./addEnclosure.php">
+            <button class="bubbly-button">Add Enclosure</button>
+        </a>
+        <a href="./addAnimalEnclosure.php">
+            <button class="bubbly-button">Add Animal to Enclosure</button>
+        </a>
     </div>
 
     <!-- ANIMALS -->
@@ -46,7 +53,8 @@ $animalManager = new AnimalManager($db);
             <?php
             $tigers_array = $animalManager->findAllTigers();
             foreach ($tigers_array as $tiger) {
-                echo $tiger->displayAnimalInfo($tiger);
+                echo $tiger->displayAnimalInfo($tiger) . "<br>";
+                
             }
             ?>  
         </div>
@@ -70,7 +78,12 @@ $animalManager = new AnimalManager($db);
     <!-- ENCLOSURES -->
     <div class="enclosures">
         <div class="enclosures__tiger">
-
+            <?php
+            $enclosure_array = $enclosureManager->findAllEnclosure();
+            foreach ($enclosure_array as $enclosure) {
+                echo $enclosure->displayEnclosureDetails();
+            }
+            ?>
         </div>
 
         <div class="enclosures__fish">

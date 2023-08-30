@@ -40,9 +40,6 @@ class   AnimalManager
             ':height' => $animal->getHeight(),
             ':species' => $animal->getSpecies(),
             ':age' => $animal->getAge(),
-            // ':isHungry' => $animal->getisHungry(),
-            // ':isSleeping' => $animal->getisSleeping(),
-            // ':isSick' => $animal->getisSick()
         ));
 
         $id = $this->db->lastInsertId();

@@ -4,11 +4,11 @@ require_once('../config/db.php');
 require_once('../config/autoload.php');
 require_once('../classes/AnimalManager.php');
 
-var_dump($_POST);
+$animal = [];
 
 if($_POST['species'] == 'Bear') {
 
-$animal = new Bear();
+$animal = new Bear($animal);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $animalManager = new AnimalManager($db);
@@ -25,10 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 }
 
-if($_POST['species'] == 'Tiger') {
+elseif($_POST['species'] == 'Tiger') {
 
-    $animal = new Tiger();
-    
+    $animal = new Tiger($animal);
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $animalManager = new AnimalManager($db);
         $animal->setName($_POST['name']);
@@ -36,7 +35,7 @@ if($_POST['species'] == 'Tiger') {
         $animal->setHeight($_POST['height']);
         $animal->setSpecies($_POST['species']);
         $animal->setAge($_POST['age']);
-    
+    var_dump($animal);
         $animalManager->addAnimal($animal);
     
         header('Location: ../animals.php');
@@ -44,9 +43,9 @@ if($_POST['species'] == 'Tiger') {
     
     }
 
-    if($_POST['species'] == 'Eagle') {
+    elseif($_POST['species'] == 'Eagle') {
 
-        $animal = new Eagle();
+        $animal = new Eagle($animal);
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $animalManager = new AnimalManager($db);
@@ -63,9 +62,9 @@ if($_POST['species'] == 'Tiger') {
         
         }
 
-        if($_POST['species'] == 'Axolotl') {
+        elseif($_POST['species'] == 'Axolotl') {
 
-            $animal = new Fish();
+            $animal = new Fish($animal);
             
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $animalManager = new AnimalManager($db);

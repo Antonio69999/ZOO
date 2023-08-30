@@ -25,6 +25,10 @@ div {
     line-height: 26px;
 }
 
+a {
+    text-decoration: none;
+}
+
 // TITLE //
 
 .letters_color {
@@ -79,4 +83,8 @@ div {
         text-align: justify;
         font-size: large;
     }
+}
+
+.add {
+    text-align: center;
 }
