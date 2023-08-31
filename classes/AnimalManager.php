@@ -58,4 +58,15 @@ class   AnimalManager
         }
         return $tigers_array;
     }
+
+    public function getTigerNamesWithIds()
+    {
+        $sql = "SELECT id_animals, name FROM animals WHERE id_enclosure = 0";
+        $result = $this->db->query($sql);
+        $tigers = $result->fetchAll(PDO::FETCH_ASSOC);
+
+        return $tigers;
+    }
+
+    
 }

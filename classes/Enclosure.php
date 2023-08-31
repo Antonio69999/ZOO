@@ -163,5 +163,21 @@ class Enclosure
         }
     }
 
+    public function findAllTigerInTigerEnclosure($enclosureManager)
+    {
+        $sql = "SELECT * FROM animals WHERE id_enclosure = 2";
+        $result = $enclosureManager->getDb()->query($sql);
+        $tigers = $result->fetchAll(PDO::FETCH_ASSOC);
+        $tigersArray = [];
+
+        foreach ($tigers as $tiger) {
+            $tigersArray[] = new Tiger($tiger);
+        }
+
+        return $tigersArray;
+    }
+
+    
+
 
 }

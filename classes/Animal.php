@@ -8,6 +8,7 @@ abstract class   Animal
         protected  $name;
         protected  $species;
         protected  $age;
+        protected $id_enclosure;
 
         protected bool $isHungry = false;
         protected bool $isSleeping = false;
@@ -15,11 +16,11 @@ abstract class   Animal
 
         public function __construct($animal)
         {
-                $this->setName($animal['name'] ?? '');       // Use default value if not provided
-                $this->setWeight($animal['weight'] ?? 0);    // Use default value if not provided
-                $this->setHeight($animal['height'] ?? 0);    // Use default value if not provided
-                $this->setSpecies($animal['species'] ?? ''); // Use default value if not provided
-                $this->setAge($animal['age'] ?? 0);          // Use default value if not provided
+                $this->setName($animal['name'] ?? '');      
+                $this->setWeight($animal['weight'] ?? 0);   
+                $this->setHeight($animal['height'] ?? 0);   
+                $this->setSpecies($animal['species'] ?? '');
+                $this->setAge($animal['age'] ?? 0);         
 
         }
 
@@ -205,6 +206,26 @@ abstract class   Animal
                 return $this;
         }
 
+        /**
+         * Get the value of id_enclosure
+         */ 
+        public function getId_enclosure()
+        {
+                return $this->id_enclosure;
+        }
+
+        /**
+         * Set the value of id_enclosure
+         *
+         * @return  self
+         */ 
+        public function setId_enclosure($id_enclosure)
+        {
+                $this->id_enclosure = $id_enclosure;
+
+                return $this;
+        }
+
 
 
         public function displayAnimalInfo($animal)
@@ -245,4 +266,6 @@ abstract class   Animal
 
                 return 'I\'m in great shape ! ';
         }
+
+        
 }

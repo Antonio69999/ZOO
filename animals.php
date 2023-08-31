@@ -2,6 +2,8 @@
 include_once('./config/autoload.php');
 include_once('./config/db.php');
 include('./classes/AnimalManager.php');
+include ('./classes/EnclosureManager.php');
+
 
 $animalManager = new AnimalManager($db);
 $enclosureManager = new EnclosureManager($db);
@@ -54,23 +56,22 @@ $enclosureManager = new EnclosureManager($db);
             $tigers_array = $animalManager->findAllTigers();
             foreach ($tigers_array as $tiger) {
                 echo $tiger->displayAnimalInfo($tiger) . "<br>";
-                
             }
-            ?>  
+            ?>
         </div>
 
         <div class="animals__axolotl">
-        
+
         </div>
 
         <div class="animals__bear">
-        
+
         </div>
 
         <div class="animals__eagle">
-            
 
-            
+
+
         </div>
 
     </div>
@@ -79,11 +80,16 @@ $enclosureManager = new EnclosureManager($db);
     <div class="enclosures">
         <div class="enclosures__tiger">
             <?php
-            $enclosure_array = $enclosureManager->findAllEnclosure();
-            foreach ($enclosure_array as $enclosure) {
-                echo $enclosure->displayEnclosureDetails();
+            $enclosures_array = $enclosureManager->findAllEnclosure();
+            foreach ($enclosures_array as $enclosure) {
+                 $tigersArray = $enclosure->findAllTigerInTigerEnclosure($enclosureManager);
+                 foreach ($tigersArray as $tiger) {
+                    echo $tiger->displayAnimalInfo($tiger);
+                 }
             }
+
             ?>
+
         </div>
 
         <div class="enclosures__fish">

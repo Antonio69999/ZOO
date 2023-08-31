@@ -35,7 +35,6 @@ elseif($_POST['species'] == 'Tiger') {
         $animal->setHeight($_POST['height']);
         $animal->setSpecies($_POST['species']);
         $animal->setAge($_POST['age']);
-    var_dump($animal);
         $animalManager->addAnimal($animal);
     
         header('Location: ../animals.php');

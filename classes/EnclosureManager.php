@@ -54,4 +54,30 @@ class   EnclosureManager
         }
         return $enclosures_array;
     }
+
+    public function findEnclosureNames()
+    {
+        $sql = "SELECT name, id_enclosure FROM enclosure";
+        $result = $this->db->query($sql);
+        $enclosures = $result->fetchAll(PDO::FETCH_ASSOC);
+        $enclosures_array = [];
+
+        foreach ($enclosures as $enclosure) {
+            $enclosures_array[] = $enclosure['name'];
+            $enclosureId = $enclosure['id_enclosure'];
+        }
+
+        return $enclosures_array;
+    }
+
+    public function findEnclosuresWithIds()
+    {
+        $sql = "SELECT id_enclosure, name FROM enclosure";
+        $result = $this->db->query($sql);
+        $enclosures = $result->fetchAll(PDO::FETCH_ASSOC);
+
+        return $enclosures;
+    }
+
+    
 }
