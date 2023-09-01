@@ -61,12 +61,11 @@ class   AnimalManager
 
     public function getTigerNamesWithIds()
     {
-        $sql = "SELECT id_animals, name FROM animals WHERE id_enclosure = 0";
+        $sql = "SELECT DISTINCT id_animals, name, species FROM animals WHERE id_enclosure = 0";
         $result = $this->db->query($sql);
         $tigers = $result->fetchAll(PDO::FETCH_ASSOC);
 
         return $tigers;
     }
 
-    
 }

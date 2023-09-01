@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $animalManager->addAnimal($animal);
 
-    header('Location: ../animals.php');
+    header('Location: ../index.php');
 }
 
 }
@@ -37,7 +37,7 @@ elseif($_POST['species'] == 'Tiger') {
         $animal->setAge($_POST['age']);
         $animalManager->addAnimal($animal);
     
-        header('Location: ../animals.php');
+        header('Location: ../index.php');
     }
     
     }
@@ -56,7 +56,7 @@ elseif($_POST['species'] == 'Tiger') {
         
             $animalManager->addAnimal($animal);
         
-            header('Location: ../animals.php');
+            header('Location: ../index.php');
         }
         
         }
@@ -75,7 +75,7 @@ elseif($_POST['species'] == 'Tiger') {
             
                 $animalManager->addAnimal($animal);
             
-                header('Location: ../animals.php');
+                header('Location: ../index.php');
             }
             
             }

@@ -24,10 +24,19 @@ require_once('./config/db.php');
                     $tigerNamesWithIds = $animalManager->getTigerNamesWithIds();
 
                     foreach ($tigerNamesWithIds as $tiger) {
-                        echo '<option value="' . $tiger['id_animals'] . '">' . $tiger['name'] . '</option>';
+                        echo '<option value="' . $tiger['id_animals'] . '">' . $tiger['name']  . '</option>';
                     }
                     ?>
                 </select>
+                <?php
+                ?>
+            </fieldset>
+            <fieldset>
+                <select name="species" id="species">
+                    <option value="Tiger">Tiger</option>
+                    <option value="Bear">Bear</option>
+                </select>
+
             </fieldset>
             <fieldset>
                 <select name="enclosure" id="enclosure">

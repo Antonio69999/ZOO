@@ -18,7 +18,7 @@ require_once('./config/db.php');
         <form id="enclosure" action="./process/process_enclosure.php" method="post">
             <h3>Add Enclosure</h3>
             <fieldset>
-                <input name="name" placeholder="Animal Name" type="text" tabindex="1" required min="0" autofocus>
+                <input name="name" placeholder="Enclosure Name" type="text" tabindex="1" required min="0" autofocus>
             </fieldset>
             <fieldset>
                 <input name="species" placeholder="Species" type="hidden" tabindex="1" autofocus>

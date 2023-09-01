@@ -2,15 +2,16 @@
 
 class Enclosure
 {
-    private int $idEnclosure;
+    private int $idEnclosure = 0;
     private string $name;
     private bool $isClean = true;
     private int $attendingAnimals = 0;
-    private array $animals = []; 
+    private array $animals = [];
 
     public function __construct($enclosure)
     {
         $this->setName($enclosure['name'] ?? '');
+        $this->idEnclosure = $enclosure['id_enclosure'];
     }
 
 
@@ -95,9 +96,9 @@ class Enclosure
         return $this;
     }
 
-        /**
+    /**
      * Get the value of idEnclosure
-     */ 
+     */
     public function getIdEnclosure()
     {
         return $this->idEnclosure;
@@ -107,7 +108,7 @@ class Enclosure
      * Set the value of idEnclosure
      *
      * @return  self
-     */ 
+     */
     public function setIdEnclosure($idEnclosure)
     {
         $this->idEnclosure = $idEnclosure;
@@ -163,11 +164,14 @@ class Enclosure
         }
     }
 
-    public function findAllTigerInTigerEnclosure($enclosureManager)
+    public function findAllTigerInTigerEnclosure($enclosureManager, $enclosureId)
     {
-        $sql = "SELECT * FROM animals WHERE id_enclosure = 2";
-        $result = $enclosureManager->getDb()->query($sql);
-        $tigers = $result->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM animals WHERE id_enclosure = :enclosure_id";
+        $stmt = $enclosureManager->getDb()->prepare($sql);
+        $stmt->bindParam(':enclosure_id', $enclosureId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $tigers = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $tigersArray = [];
 
         foreach ($tigers as $tiger) {
@@ -177,7 +181,20 @@ class Enclosure
         return $tigersArray;
     }
 
-    
+    public function findAllBearInBearEnclosure($enclosureManager, $enclosureId)
+    {
+        $sql = "SELECT * FROM animals WHERE id_enclosure = :enclosure_id";
+        $stmt = $enclosureManager->getDb()->prepare($sql);
+        $stmt->bindParam(':enclosure_id', $enclosureId, PDO::PARAM_INT);
+        $stmt->execute();
 
+        $bears = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $bearsArray = [];
 
+        foreach ($bears as $bear) {
+            $bearsArray[] = new Bear($bear);
+        }
+
+        return $bearsArray;
+    }
 }

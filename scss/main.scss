@@ -39,11 +39,10 @@ a {
 
 .animals {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+    text-align: center;
     text-justify: justify;
-    font-size: large;
+    flex-direction: column;
+
 
     // &__tiger {
 
@@ -76,6 +75,15 @@ a {
     }
 
     &__fish {
+        display: flex;
+        flex-direction: column;
+        border: rgb(180, 82, 12) 3px solid;
+        justify-content: jusity;
+        text-align: justify;
+        font-size: large;
+    }
+
+    &__bear {
         display: flex;
         flex-direction: column;
         border: rgb(180, 82, 12) 3px solid;

@@ -11,5 +11,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $enclosureManager->addEnclosure($enclosure);
 
-    header('Location: ../animals.php');
+    header('Location: ../index.php');
 }

@@ -32,11 +32,9 @@ a {
 
 .animals {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
+  text-align: center;
   text-justify: justify;
-  font-size: large;
+  flex-direction: column;
 }
 
 .enclosures__tiger {
@@ -48,6 +46,14 @@ a {
   font-size: large;
 }
 .enclosures__fish {
+  display: flex;
+  flex-direction: column;
+  border: rgb(180, 82, 12) 3px solid;
+  justify-content: jusity;
+  text-align: justify;
+  font-size: large;
+}
+.enclosures__bear {
   display: flex;
   flex-direction: column;
   border: rgb(180, 82, 12) 3px solid;

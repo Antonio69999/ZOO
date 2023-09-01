@@ -16,12 +16,11 @@ abstract class   Animal
 
         public function __construct($animal)
         {
-                $this->setName($animal['name'] ?? '');      
-                $this->setWeight($animal['weight'] ?? 0);   
-                $this->setHeight($animal['height'] ?? 0);   
+                $this->setName($animal['name'] ?? '');
+                $this->setWeight($animal['weight'] ?? 0);
+                $this->setHeight($animal['height'] ?? 0);
                 $this->setSpecies($animal['species'] ?? '');
-                $this->setAge($animal['age'] ?? 0);         
-
+                $this->setAge($animal['age'] ?? 0);
         }
 
 
@@ -208,7 +207,7 @@ abstract class   Animal
 
         /**
          * Get the value of id_enclosure
-         */ 
+         */
         public function getId_enclosure()
         {
                 return $this->id_enclosure;
@@ -218,7 +217,7 @@ abstract class   Animal
          * Set the value of id_enclosure
          *
          * @return  self
-         */ 
+         */
         public function setId_enclosure($id_enclosure)
         {
                 $this->id_enclosure = $id_enclosure;
@@ -237,14 +236,14 @@ abstract class   Animal
                 echo "Age : " . $this->getAge($animal) . " y.o " . "<br>";
         }
 
-        public function eat(): string
+        public function isHungry()
         {
-                if ($this->getIsHungry()) {
-                        $this->setIsHungry(false);
-                        return 'I\'m well fed';
+                $isHungry = rand(0, 3);
+                if ($isHungry == 0) {
+                        return "" . $this->getName() . " is hungry";
+                } else {
+                        return "" . $this->getName() . " is well fed";
                 }
-
-                return 'I\'m not hungry';
         }
 
         public function sleep(): string
@@ -266,6 +265,4 @@ abstract class   Animal
 
                 return 'I\'m in great shape ! ';
         }
-
-        
 }

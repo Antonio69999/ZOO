@@ -1,13 +1,6 @@
 <?php
-include_once('./config/autoload.php');
-include_once('./config/db.php');
-include('./classes/AnimalManager.php');
-include ('./classes/EnclosureManager.php');
-
-
-$animalManager = new AnimalManager($db);
-$enclosureManager = new EnclosureManager($db);
-
+require_once('./config/autoload.php');
+require_once('./config/db.php');
 ?>
 
 <!DOCTYPE html>
@@ -16,94 +9,43 @@ $enclosureManager = new EnclosureManager($db);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/addButton.css">
-    <script src="./script/button.js"></script>
-    <title>ZOO</title>
+    <link rel="stylesheet" href="./css/form.css">
+    <title>Add Animals</title>
 </head>
 
 <body>
-
-    <header>
-        <h1>
-            <span class="letters_color">W</span>elcome
-            <span class="letters_color">T</span>o
-            <span class="letters_color">M</span>y
-            <span class="letters_color">Z</span>oo !
-        </h1>
-    </header>
-
-    <!-- ADD ANIMALS -->
-
-    <div class="add">
-        <a href="./index.php">
-            <button class="bubbly-button">Add Animal</button>
-        </a>
-        <a href="./addEnclosure.php">
-            <button class="bubbly-button">Add Enclosure</button>
-        </a>
-        <a href="./addAnimalEnclosure.php">
-            <button class="bubbly-button">Add Animal to Enclosure</button>
-        </a>
+    <div class="container">
+        <form id="contact" action="./process/process_form.php" method="post">
+            <h3>Add Animal</h3>
+            <fieldset>
+                <input name="name" placeholder="Animal Name" type="text" tabindex="1" required min="0" autofocus>
+            </fieldset>
+            <fieldset>
+                <input name="species" placeholder="Species" type="hidden" tabindex="1" autofocus>
+                <select name="species" placeholder="Species">
+                    <option value="">--Please choose a species</option>
+                    <option value="Bear">Bear</option>
+                    <option value="Eagle">Eagle</option>
+                    <option value="Tiger">Tiger</option>
+                    <option value="Fish">Axolotl</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <input name="weight" placeholder="Weight (kg)" type="number" tabindex="2" required min="0" required pattern="[0-9]+(\.[0-9]+)?">
+            </fieldset>
+            <fieldset>
+                <input name="height" placeholder="Height (cm)" type="number" tabindex="3" required min="0" required pattern="[0-9]+">
+            </fieldset>
+            <fieldset>
+                <input name="age" placeholder="Age" type="number" tabindex="4" required min="0" step="1" required pattern="[0-9]+">
+            </fieldset>
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Let's Go </button>
+            </fieldset>
+            <p class="copyright">Have Fun !</p>
+        </form>
     </div>
 
-    <!-- ANIMALS -->
-
-    <div class="animals">
-
-        <div class="animals__tiger">
-            <?php
-            $tigers_array = $animalManager->findAllTigers();
-            foreach ($tigers_array as $tiger) {
-                echo $tiger->displayAnimalInfo($tiger) . "<br>";
-            }
-            ?>
-        </div>
-
-        <div class="animals__axolotl">
-
-        </div>
-
-        <div class="animals__bear">
-
-        </div>
-
-        <div class="animals__eagle">
-
-
-
-        </div>
-
-    </div>
-
-    <!-- ENCLOSURES -->
-    <div class="enclosures">
-        <div class="enclosures__tiger">
-            <?php
-            $enclosures_array = $enclosureManager->findAllEnclosure();
-            foreach ($enclosures_array as $enclosure) {
-                 $tigersArray = $enclosure->findAllTigerInTigerEnclosure($enclosureManager);
-                 foreach ($tigersArray as $tiger) {
-                    echo $tiger->displayAnimalInfo($tiger);
-                 }
-            }
-
-            ?>
-
-        </div>
-
-        <div class="enclosures__fish">
-
-        </div>
-
-        <div class="enclosures__bear">
-
-        </div>
-
-        <div class="enclosures__eagle">
-
-        </div>
-    </div>
 
 </body>
 
